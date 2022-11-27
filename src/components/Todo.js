@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { uploadFile } from "../storage";
+// import { uploadFile } from "../storage";
+import FileLoader from "./FileLoader";
 import { ReactComponent as CheckIcon } from "../icons/check-circle.svg";
 import { ReactComponent as CheckDoneIcon } from "../icons/check-circle-done.svg";
 import { ReactComponent as EditIcon } from "../icons/edit.svg";
 import { ReactComponent as DeleteIcon } from "../icons/delete.svg";
 import { ReactComponent as EditDoneIcon } from "../icons/done.svg";
-import { ReactComponent as Folder } from "../icons/folder_open.svg";
+// import { ReactComponent as Folder } from "../icons/folder_open.svg";
 
 // function Todo(props) {
 function Todo({ todo, toggleComplete, handleEdit, handleDelete }) {
@@ -14,7 +15,7 @@ function Todo({ todo, toggleComplete, handleEdit, handleDelete }) {
   const [newDate, setNewDate] = useState(todo.date);
   const [btnActive, setBtnActive] = useState(false);
   const [disabled, setDisabled] = useState(true);
-  const [selectedFile, setSelectedFile] = useState("");
+  // const [selectedFile, setSelectedFile] = useState("");
 
   const handleChangeTitle = (e) => {
     e.preventDefault();
@@ -33,10 +34,10 @@ function Todo({ todo, toggleComplete, handleEdit, handleDelete }) {
     e.preventDefault();
     setNewDate(e.target.value);
   };
-  const fileChangeHandler = (event) => {
-    setSelectedFile(event.target.files[0]);
-    uploadFile(selectedFile, todo);
-  };
+  // const fileChangeHandler = (event) => {
+  //   setSelectedFile(event.target.files[0]);
+  //   uploadFile(selectedFile, todo);
+  // };
   const handleActiveBtn = () => {
     btnActive ? setBtnActive(false) : setBtnActive(true);
     disabled ? setDisabled(false) : setDisabled(true);
@@ -88,7 +89,8 @@ function Todo({ todo, toggleComplete, handleEdit, handleDelete }) {
         <button className="button-delete" onClick={() => handleDelete(todo.id)}>
           <DeleteIcon />
         </button>
-        <button>
+        <FileLoader todo={todo} />
+        {/* <button>
           <label htmlFor="inputFile">
             <Folder />
             <input
@@ -98,7 +100,7 @@ function Todo({ todo, toggleComplete, handleEdit, handleDelete }) {
               onChange={fileChangeHandler}
             />
           </label>
-        </button>
+        </button> */}
       </div>
     </li>
   );

@@ -42,6 +42,9 @@ function App() {
   const handleDelete = async (id) => {
     await deleteDoc(doc(db, "todos", id));
   };
+  if (todos.length === 0) {
+    return <h2>Нет записей</h2>;
+  }
 
   return (
     <div className="App">

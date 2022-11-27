@@ -21,7 +21,7 @@ button {
   font-size: 18px;
   background-color: #ffffff;
   /* border: 1px solid black; */
-  border: none;
+  /* border: none; */
   cursor: pointer;
 }
 .button-complete {
@@ -37,9 +37,9 @@ button {
 ul li {
   list-style-type: none;
 }
-.file_input {
+/* .file_input {
   display: none;
-}
+} */
 label {
   /* display: grid;
   grid-template-columns: 259px auto; */

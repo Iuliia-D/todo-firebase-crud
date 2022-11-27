@@ -17,10 +17,10 @@ const app = initializeApp(firebaseConfig);
 
 export const storage = getStorage(app);
 
-export const uploadFile = (selectedFile, todo) => {
-  if (selectedFile === "") return;
-  const fileRef = ref(storage, `files/${todo.id}`);
-  uploadBytes(fileRef, selectedFile).then(() => {
-    console.log("file upload!");
-  });
-};
+// export const uploadFile = (selectedFile, todo) => {
+//   if (selectedFile === "") return;
+//   const fileRef = ref(storage, `files/${todo.id}`);
+//   uploadBytes(fileRef, selectedFile).then(() => {
+//     console.log("file upload!");
+//   });
+// };
