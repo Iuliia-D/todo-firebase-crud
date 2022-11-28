@@ -1,0 +1,58 @@
+$font-family: "Roboto", sans-serif;
+@mixin regular-text {
+  font-family: $font-family;
+  font-size: 16px;
+  font-weight: 400;
+  color: #3e3b3b;
+}
+
+.input_containers_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input_container {
+  margin-bottom: 10px;
+
+  input {
+    width: 300px;
+    height: 30px;
+    padding: 12px 0 10px 15px;
+    border-radius: 25px;
+    border: 1px solid rgb(227, 227, 227);
+    &::placeholder {
+      @include regular-text();
+    }
+  }
+  .input_date {
+    width: 150px;
+  }
+  textarea {
+    width: 300px;
+    height: 100px;
+    padding: 12px 0 10px 15px;
+    border-radius: 25px;
+    border: 1px solid rgb(227, 227, 227);
+    font-family: $font-family;
+    &::placeholder {
+      @include regular-text();
+    }
+  }
+}
+.btn_container button {
+  @include regular-text();
+  border: none;
+  background: linear-gradient(90deg, #a8d2a5 0%, #acd4e1 115.2%);
+  box-shadow: 0px 4px 4px #acd4e1;
+  border-radius: 25px;
+  width: 200px;
+  height: 30px;
+  &:hover {
+    box-shadow: 0px 3px 3px #8cbfd0;
+    transition: 1s;
+  }
+  &:active {
+    box-shadow: 0px 1px 1px #8cbfd0;
+    background: linear-gradient(90deg, #a8d2a5 0%, #88b8c7 115.2%);
+  }
+}

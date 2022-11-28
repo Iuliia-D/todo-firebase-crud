@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
+import classes from "./Createtodo.module.scss";
 
 function CreateTodo(props) {
   const [title, setTitle] = useState("");
@@ -22,8 +23,8 @@ function CreateTodo(props) {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="input-container">
+    <form onSubmit={handleSubmit} className={classes.input_containers_wrapper}>
+      <div className={classes.input_container}>
         <input
           type="text"
           placeholder="Что нужно сделать?"
@@ -31,22 +32,23 @@ function CreateTodo(props) {
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
-      <div className="input-container">
-        <input
+      <div className={classes.input_container}>
+        <textarea
           type="text"
           placeholder="Подробности"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
       </div>
-      <div className="input-container">
+      <div className={classes.input_container}>
         <input
           type="date"
           value={date}
+          className={classes.input_date}
           onChange={(e) => setDate(e.target.value)}
         />
       </div>
-      <div className="btn-container">
+      <div className={classes.btn_container}>
         <button>Сохранить</button>
       </div>
     </form>

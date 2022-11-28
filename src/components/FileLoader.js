@@ -10,7 +10,7 @@ import {
 import { ReactComponent as Done } from "../icons/done.svg";
 import { ReactComponent as Link } from "../icons/link.svg";
 import { ReactComponent as LinkOf } from "../icons/link_off.svg";
-// import { ReactComponent as Folder } from "../icons/folder_open.svg";
+import classes from "./FileLoader.module.scss";
 
 function FileLoader({ todo }) {
   const [selectedFile, setSelectedFile] = useState("");
@@ -77,7 +77,7 @@ function FileLoader({ todo }) {
             <input
               type="file"
               id="inputFile"
-              className="input"
+              className={classes.input_file}
               onChange={fileChangeHandler}
             />
             {/* </label> */}

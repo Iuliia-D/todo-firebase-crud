@@ -14,8 +14,10 @@ import Todo from "./components/Todo";
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     const q = query(collection(db, "todos"));
     const unsub = onSnapshot(q, (querySnapshot) => {
       let todosArray = [];
@@ -23,6 +25,7 @@ function App() {
         todosArray.push({ ...doc.data(), id: doc.id });
       });
       setTodos(todosArray);
+      setIsLoading(false);
     });
     return () => unsub();
   }, []);
@@ -42,6 +45,13 @@ function App() {
   const handleDelete = async (id) => {
     await deleteDoc(doc(db, "todos", id));
   };
+  if (isLoading) {
+    return (
+      <section>
+        <p>Loading...</p>
+      </section>
+    );
+  }
   if (todos.length === 0) {
     return <h2>Нет записей</h2>;
   }

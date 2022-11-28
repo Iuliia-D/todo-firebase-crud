@@ -7,6 +7,8 @@ import { ReactComponent as EditIcon } from "../icons/edit.svg";
 import { ReactComponent as DeleteIcon } from "../icons/delete.svg";
 import { ReactComponent as EditDoneIcon } from "../icons/done.svg";
 
+import classes from "./Todo.module.scss";
+
 function Todo({ todo, toggleComplete, handleEdit, handleDelete }) {
   const [newTitle, setNewTitle] = useState(todo.title);
   const [newDescription, setNewDescription] = useState(todo.description);
@@ -39,52 +41,62 @@ function Todo({ todo, toggleComplete, handleEdit, handleDelete }) {
   // const now = new Date();
 
   return (
-    <li className="todo">
-      <button className="button-complete" onClick={() => toggleComplete(todo)}>
-        {todo.completed ? <CheckDoneIcon /> : <CheckIcon />}
-      </button>
+    <li className={classes.todo}>
+      <div className={classes.todo_firstline}>
+        <button
+          className={classes.button_complete}
+          onClick={() => toggleComplete(todo)}
+        >
+          {todo.completed ? <CheckDoneIcon /> : <CheckIcon />}
+        </button>
+        <div>
+          <input
+            style={{ textDecoration: todo.completed && "line-through" }}
+            type="text"
+            value={todo.title === "" ? newTitle : todo.title}
+            className="list"
+            disabled={disabled}
+            onChange={handleChangeTitle}
+          />
+        </div>
+        <div>
+          <input
+            // style={
+            //   todo.date <= now ? { borderColor: "red" } : { borderColor: "black" }
+            // }
+            type="date"
+            value={newDate || todo.date}
+            className="list"
+            disabled={disabled}
+            onChange={handleChangeDate}
+          />
+        </div>
+      </div>
 
-      <input
-        style={{ textDecoration: todo.completed && "line-through" }}
-        type="text"
-        value={todo.title === "" ? newTitle : todo.title}
-        className="list"
-        disabled={disabled}
-        onChange={handleChangeTitle}
-      />
-
-      <input
-        // style={
-        //   todo.date <= now ? { borderColor: "red" } : { borderColor: "black" }
-        // }
-        type="date"
-        value={newDate || todo.date}
-        className="list"
-        disabled={disabled}
-        onChange={handleChangeDate}
-      />
-      <button
-        className="button-edit"
-        onClick={() => {
-          handleEdit(todo, newTitle, newDescription, newDate);
-          handleActiveBtn();
-        }}
-      >
-        {btnActive ? <EditDoneIcon /> : <EditIcon />}
-      </button>
-
-      <button className="button-delete" onClick={() => handleDelete(todo.id)}>
-        <DeleteIcon />
-      </button>
       <div>
-        <input
+        <button
+          className="button-edit"
+          onClick={() => {
+            handleEdit(todo, newTitle, newDescription, newDate);
+            handleActiveBtn();
+          }}
+        >
+          {btnActive ? <EditDoneIcon /> : <EditIcon />}
+        </button>
+        <textarea
           style={{ textDecoration: todo.completed && "line-through" }}
           type="text"
           value={newDescription || todo.description}
-          className="list"
+          className={classes.textarea}
           disabled={disabled}
           onChange={handleChangeDescr}
         />
+      </div>
+      <div className={classes.delete_btn_wrapper}>
+        <button onClick={() => handleDelete(todo.id)}>
+          {/* <DeleteIcon /> */}
+          Удалить
+        </button>
       </div>
       <div>
         <FileLoader todo={todo} />
