@@ -1,4 +1,47 @@
-.input_file {
-  background-color: transparent;
-  border: none;
+$font-family: "Roboto", sans-serif;
+@mixin regular-text {
+  font-family: $font-family;
+  font-size: 16px;
+  font-weight: 400;
+  color: #3e3b3b;
+}
+@mixin small-text {
+  @include regular-text();
+  font-size: 14px;
+  font-weight: 100;
+}
+
+.file_loader {
+  @include small-text();
+  input {
+    background-color: transparent;
+    border: none;
+    margin-top: 15px;
+    text-align: center;
+  }
+}
+
+.file_actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+.file_link {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  @include small-text();
+  span {
+    margin: 0 0 0 3px;
+  }
+}
+.file_delete_btn {
+  @include small-text();
+  display: flex;
+  flex-direction: row;
+  margin-top: -3px;
+  p {
+    margin: 1px 0 0 3px;
+  }
 }

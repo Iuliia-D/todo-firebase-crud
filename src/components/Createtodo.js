@@ -27,6 +27,7 @@ function CreateTodo(props) {
       <div className={classes.input_container}>
         <input
           type="text"
+          maxlength="30"
           placeholder="Что нужно сделать?"
           value={title}
           onChange={(e) => setTitle(e.target.value)}

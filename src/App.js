@@ -58,7 +58,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Список дел:</h1>
+      <h1>Список дел</h1>
       <CreateTodo />
       <ul>
         {todos

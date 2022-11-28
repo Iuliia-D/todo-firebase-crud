@@ -28,7 +28,9 @@ $font-family: "Roboto", sans-serif;
     width: 150px;
   }
   textarea {
+    max-width: 300px;
     width: 300px;
+    max-height: 350px;
     height: 100px;
     padding: 12px 0 10px 15px;
     border-radius: 25px;

@@ -58,7 +58,6 @@ function FileLoader({ todo }) {
     });
   };
 
-  //   const fileListRef = ref(storage, "files/");
   useEffect(() => {
     getDownloadURL(ref(storage, `files/${todo.id}`))
       .then((url) => setFileURL(url))
@@ -68,55 +67,52 @@ function FileLoader({ todo }) {
   }, []);
 
   return (
-    <>
-      <div className="file_controll">
-        {!todo.file && (
-          <div className="file_input">
-            {/* <label htmlFor="inputFile">
-            Select */}
-            <input
-              type="file"
-              id="inputFile"
-              className={classes.input_file}
-              onChange={fileChangeHandler}
-            />
-            {/* </label> */}
-            {selectedFile !== "" ? (
-              <button
-                type="button"
-                onClick={() => {
-                  uploadFile();
-                  handleAddFile(todo, selectedFileName);
-                }}
-              >
-                <Done />
-              </button>
-            ) : (
-              ""
-            )}
-          </div>
-        )}
-        {todo.file && (
-          <div>
-            <a href={fileURL} target="_blank" rel="noreferrer">
-              <Link />
-              ссылка на файл
-            </a>
-
+    <div className={classes.file_loader_wrapper}>
+      {!todo.file && (
+        <div className={classes.file_loader}>
+          <input type="file" id="inputFile" onChange={fileChangeHandler} />
+          {selectedFile !== "" ? (
             <button
-              className="btn_file_delete"
+              type="button"
               onClick={() => {
-                deleteFile();
-                handleDelteFile(todo);
+                uploadFile();
+                handleAddFile(todo, selectedFileName);
               }}
             >
-              <LinkOf />
-              удалить файл
+              <Done />
             </button>
+          ) : (
+            ""
+          )}
+        </div>
+      )}
+      {todo.file && (
+        <div className={classes.file_actions}>
+          <div>
+            <a
+              href={fileURL}
+              target="_blank"
+              rel="noreferrer"
+              className={classes.file_link}
+            >
+              <Link />
+              <span>ссылка на файл</span>
+            </a>
           </div>
-        )}
-      </div>
-    </>
+
+          <button
+            className={classes.file_delete_btn}
+            onClick={() => {
+              deleteFile();
+              handleDelteFile(todo);
+            }}
+          >
+            <LinkOf />
+            <p>удалить файл</p>
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
 

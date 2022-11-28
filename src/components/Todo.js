@@ -43,23 +43,23 @@ function Todo({ todo, toggleComplete, handleEdit, handleDelete }) {
   return (
     <li className={classes.todo}>
       <div className={classes.todo_firstline}>
-        <button
-          className={classes.button_complete}
-          onClick={() => toggleComplete(todo)}
-        >
-          {todo.completed ? <CheckDoneIcon /> : <CheckIcon />}
-        </button>
+        <div className={classes.button_complete}>
+          <button onClick={() => toggleComplete(todo)}>
+            {todo.completed ? <CheckDoneIcon /> : <CheckIcon />}
+          </button>
+        </div>
         <div>
           <input
             style={{ textDecoration: todo.completed && "line-through" }}
             type="text"
             value={todo.title === "" ? newTitle : todo.title}
-            className="list"
             disabled={disabled}
             onChange={handleChangeTitle}
           />
         </div>
-        <div>
+      </div>
+      <div className={classes.todo_secondline}>
+        <div className={classes.todo_date}>
           <input
             // style={
             //   todo.date <= now ? { borderColor: "red" } : { borderColor: "black" }
@@ -71,18 +71,18 @@ function Todo({ todo, toggleComplete, handleEdit, handleDelete }) {
             onChange={handleChangeDate}
           />
         </div>
+        <div className={classes.edit_btn}>
+          <button
+            onClick={() => {
+              handleEdit(todo, newTitle, newDescription, newDate);
+              handleActiveBtn();
+            }}
+          >
+            {btnActive ? <EditDoneIcon /> : <EditIcon />}
+          </button>
+        </div>
       </div>
-
-      <div>
-        <button
-          className="button-edit"
-          onClick={() => {
-            handleEdit(todo, newTitle, newDescription, newDate);
-            handleActiveBtn();
-          }}
-        >
-          {btnActive ? <EditDoneIcon /> : <EditIcon />}
-        </button>
+      <div className={classes.textarea_wrapper}>
         <textarea
           style={{ textDecoration: todo.completed && "line-through" }}
           type="text"
@@ -92,10 +92,9 @@ function Todo({ todo, toggleComplete, handleEdit, handleDelete }) {
           onChange={handleChangeDescr}
         />
       </div>
-      <div className={classes.delete_btn_wrapper}>
+      <div className={classes.delete_btn}>
         <button onClick={() => handleDelete(todo.id)}>
-          {/* <DeleteIcon /> */}
-          Удалить
+          <DeleteIcon />
         </button>
       </div>
       <div>
