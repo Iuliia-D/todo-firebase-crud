@@ -54,16 +54,9 @@ ul {
 .todo_secondline {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 5px;
-  //   input {
-  //     margin: 0 0 0 46px;
-  //   }
-  //   button {
-  //     svg {
-  //       margin: 0 0px 0px 87px;
-  //     }
-  //   }
+  padding: 0 5px 0 5px;
 }
 button {
   background-color: transparent;

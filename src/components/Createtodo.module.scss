@@ -27,7 +27,7 @@ $font-family: "Roboto", sans-serif;
   }
 
   input {
-    @include small-text();
+    @include regular-text();
     width: 300px;
     height: 30px;
     padding: 12px 0 10px 15px;
@@ -48,7 +48,7 @@ $font-family: "Roboto", sans-serif;
     border: 1px solid rgb(227, 227, 227);
     font-family: $font-family;
     &::placeholder {
-      @include small-text();
+      @include regular-text();
     }
   }
 }
