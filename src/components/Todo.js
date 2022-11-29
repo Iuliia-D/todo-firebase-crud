@@ -48,9 +48,6 @@ function Todo({ todo, toggleComplete, handleEdit, handleDelete }) {
       setTimeIsOver(true);
     }
   }, [todo.date]);
-  console.log(now);
-  console.log(todoDate);
-  console.log(timeIsOver);
 
   return (
     <li className={classes.todo}>
