@@ -47,12 +47,13 @@ ul {
 .todo_secondline {
   display: flex;
   flex-direction: row;
+  margin-top: 5px;
   input {
     margin: 0 0 0 46px;
   }
   button {
     svg {
-      margin: -6px 0px 0px 87px;
+      margin: 0 0px 0px 87px;
     }
   }
 }
@@ -82,21 +83,15 @@ button {
   border-radius: 5px;
   &:disabled {
     background-color: transparent;
+    color: #3e3b3b;
   }
 }
 .delete_btn {
   display: flex;
   flex-direction: row;
   justify-content: end;
-  //   width: 300px;
   button {
-    // border: 1px solid #bc0808;
-    // padding: 2px 0 0 2px;
-    // margin-left: 55px;
     margin: 2px 8px 0 0;
     background: transparent;
-    // border-radius: 25px;
-    // width: 125px;
-    // height: 20px;
   }
 }

@@ -64,7 +64,7 @@ function FileLoader({ todo }) {
       .catch((error) => {
         console.log("unsuccessful, error" + error);
       });
-  }, []);
+  }, [todo.id]);
 
   return (
     <div className={classes.file_loader_wrapper}>
@@ -91,8 +91,8 @@ function FileLoader({ todo }) {
           <div>
             <a
               href={fileURL}
-              target="_blank"
-              rel="noreferrer"
+              // target="_blank"
+              // rel="noreferrer"
               className={classes.file_link}
             >
               <Link />

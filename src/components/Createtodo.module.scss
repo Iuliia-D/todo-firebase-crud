@@ -25,7 +25,9 @@ $font-family: "Roboto", sans-serif;
     }
   }
   .input_date {
-    width: 150px;
+    width: 200px;
+    padding: 0;
+    background-color: transparent;
   }
   textarea {
     max-width: 300px;
