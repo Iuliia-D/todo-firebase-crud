@@ -14,7 +14,7 @@ $font-family: "Roboto", sans-serif;
   margin-top: 30px;
   border: 1px solid #8cbfd0;
   border-radius: 25px;
-  padding: 2px 0 10px 10px;
+  padding: 2px 0 10px 2px;
 }
 ul {
   padding: 0;
@@ -44,18 +44,25 @@ ul {
     width: 247px;
   }
 }
+.todo_date_isover {
+  color: #bc0808;
+}
+.todo_date_notisover {
+  color: black;
+}
 .todo_secondline {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   margin-top: 5px;
-  input {
-    margin: 0 0 0 46px;
-  }
-  button {
-    svg {
-      margin: 0 0px 0px 87px;
-    }
-  }
+  //   input {
+  //     margin: 0 0 0 46px;
+  //   }
+  //   button {
+  //     svg {
+  //       margin: 0 0px 0px 87px;
+  //     }
+  //   }
 }
 button {
   background-color: transparent;
@@ -73,7 +80,7 @@ button {
   justify-content: center;
 }
 .textarea {
-  @include small-text();
+  @include regular-text();
   margin: 5px 0 5px 0;
   max-width: 300px;
   width: 300px;

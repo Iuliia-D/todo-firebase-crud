@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import FileLoader from "./FileLoader";
 import { ReactComponent as CheckIcon } from "../icons/check-circle.svg";
@@ -13,8 +13,10 @@ function Todo({ todo, toggleComplete, handleEdit, handleDelete }) {
   const [newTitle, setNewTitle] = useState(todo.title);
   const [newDescription, setNewDescription] = useState(todo.description);
   const [newDate, setNewDate] = useState(todo.date);
+
   const [btnActive, setBtnActive] = useState(false);
   const [disabled, setDisabled] = useState(true);
+  const [timeIsOver, setTimeIsOver] = useState(false);
 
   const handleChangeTitle = (e) => {
     e.preventDefault();
@@ -38,7 +40,17 @@ function Todo({ todo, toggleComplete, handleEdit, handleDelete }) {
     btnActive ? setBtnActive(false) : setBtnActive(true);
     disabled ? setDisabled(false) : setDisabled(true);
   };
-  // const now = new Date();
+
+  const now = new Date();
+  const todoDate = new Date(todo.date);
+  useEffect(() => {
+    if (todoDate < now) {
+      setTimeIsOver(true);
+    }
+  }, [todo.date]);
+  console.log(now);
+  console.log(todoDate);
+  console.log(timeIsOver);
 
   return (
     <li className={classes.todo}>
@@ -61,12 +73,14 @@ function Todo({ todo, toggleComplete, handleEdit, handleDelete }) {
       <div className={classes.todo_secondline}>
         <div className={classes.todo_date}>
           <input
-            // style={
-            //   todo.date <= now ? { borderColor: "red" } : { borderColor: "black" }
-            // }
+            style={{ color: todo.completed && "#3e3b3b" }}
             type="date"
             value={newDate || todo.date}
-            className="list"
+            className={
+              timeIsOver
+                ? `${classes.todo_date_isover}`
+                : `${classes.todo_date_notisover}`
+            }
             disabled={disabled}
             onChange={handleChangeDate}
           />

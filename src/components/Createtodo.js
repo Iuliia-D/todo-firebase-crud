@@ -42,6 +42,7 @@ function CreateTodo(props) {
         />
       </div>
       <div className={classes.input_container}>
+        <p>Выберите дату</p>
         <input
           type="date"
           value={date}
